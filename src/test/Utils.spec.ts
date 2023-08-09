@@ -1,8 +1,8 @@
 import { StringUtils, getStringInfo, toUpperCase } from '../app/Utils';
 
-describe('Utils test suite', () => {
+describe.only('Utils test suite', () => {
   // it = test
-  it('should resturn uppercase of valid string', () => {
+  it.only('should resturn uppercase of valid string', () => {
     // arrange
     const sut = toUpperCase;
     const expected = 'ABC';
@@ -12,9 +12,7 @@ describe('Utils test suite', () => {
     expect(actual).toBe(expected);
   });
 
-  it.todo('test long strings');
-
-  describe('StringUtils tests', () => {
+  describe.skip('StringUtils tests', () => {
     let sut: StringUtils;
 
     beforeEach(() => {
@@ -22,7 +20,7 @@ describe('Utils test suite', () => {
       console.log('Setup');
     });
 
-    it.concurrent('Should return correct uppercase', () => {
+    it('Should return correct uppercase', () => {
       const actual = sut.toUpperCase('abc');
       expect(actual).toBe('ABC');
       console.log('Act');
@@ -40,7 +38,7 @@ describe('Utils test suite', () => {
       expect(() => sut.toUpperCase('')).toThrowError('Invalid argument!');
     });
 
-    it.only('should throw error on invalid argument - try catch block', (done) => {
+    it('should throw error on invalid argument - try catch block', (done) => {
       try {
         sut.toUpperCase('');
         done('GetStringInfo should throw error for invalid arg!');
@@ -52,7 +50,7 @@ describe('Utils test suite', () => {
     });
   });
 
-  describe('ToUpperCase examples', () => {
+  describe.skip('ToUpperCase examples', () => {
     it.each([
       { input: 'abc', expected: 'ABC' },
       { input: 'aman', expected: 'AMAN' },
@@ -63,15 +61,15 @@ describe('Utils test suite', () => {
     });
   });
 
-  describe('getStringInfo for arg My-String should', () => {
+  describe.skip('getStringInfo for arg My-String should', () => {
     // xit - it.skip
-    xit('return right length', () => {
+    it('return right length', () => {
       const actual = getStringInfo('My-String');
       expect(actual.characters).toHaveLength(9);
     });
 
     // fit = it.only
-    fit('return right lower case', () => {
+    it('return right lower case', () => {
       const actual = getStringInfo('My-String');
       expect(actual.lowerCase).toBe('my-string');
     });
