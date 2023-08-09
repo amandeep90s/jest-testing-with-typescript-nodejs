@@ -1,8 +1,8 @@
 import { StringUtils, getStringInfo, toUpperCase } from '../app/Utils';
 
-describe.only('Utils test suite', () => {
+describe('Utils test suite', () => {
   // it = test
-  it.only('should resturn uppercase of valid string', () => {
+  it('should resturn uppercase of valid string', () => {
     // arrange
     const sut = toUpperCase;
     const expected = 'ABC';
@@ -12,7 +12,7 @@ describe.only('Utils test suite', () => {
     expect(actual).toBe(expected);
   });
 
-  describe.skip('StringUtils tests', () => {
+  describe('StringUtils tests', () => {
     let sut: StringUtils;
 
     beforeEach(() => {
@@ -50,7 +50,7 @@ describe.only('Utils test suite', () => {
     });
   });
 
-  describe.skip('ToUpperCase examples', () => {
+  describe('ToUpperCase examples', () => {
     it.each([
       { input: 'abc', expected: 'ABC' },
       { input: 'aman', expected: 'AMAN' },
@@ -61,7 +61,7 @@ describe.only('Utils test suite', () => {
     });
   });
 
-  describe.skip('getStringInfo for arg My-String should', () => {
+  describe('getStringInfo for arg My-String should', () => {
     // xit - it.skip
     it('return right length', () => {
       const actual = getStringInfo('My-String');
