@@ -57,4 +57,18 @@ describe('PasswordChecker test suite', () => {
     expect(actual.valid).toBe(true);
     expect(actual.reasons).toHaveLength(0);
   });
+
+  it('Admin password with no number is invalid', () => {
+    const input = 'ABCDabcd';
+    const actual = sut.checkAdminPassword(input);
+    expect(actual.reasons).toContain(PasswordErrors.NO_NUMBER);
+    expect(actual.valid).toBe(false);
+  });
+
+  it('Admin password with number is valid', () => {
+    const input = 'ABCDab12';
+    const actual = sut.checkAdminPassword(input);
+    expect(actual.reasons).not.toContain(PasswordErrors.NO_NUMBER);
+    expect(actual.valid).toBe(true);
+  });
 });
