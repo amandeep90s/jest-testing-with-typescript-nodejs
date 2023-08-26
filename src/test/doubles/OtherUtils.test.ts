@@ -1,10 +1,38 @@
 import {
+  OtherStringUtils,
   calculateComplexity,
   toUpperCaseWithCb,
 } from '../../app/doubles/OtherUtils';
 
 describe('OtherUtils test suite', () => {
-  describe.only('Tracking callbacks with Jest mocks', () => {
+  describe('OtherStringUtils tests with spies', () => {
+    let sut: OtherStringUtils;
+
+    beforeEach(() => {
+      sut = new OtherStringUtils();
+    });
+
+    test('Use a spy on track calls', () => {
+      const toUpperCaseSpy = jest.spyOn(sut, 'toUpperCase');
+      sut.toUpperCase('asa');
+      expect(toUpperCaseSpy).toBeCalledWith('asa');
+    });
+
+    test('Use a spy on track calls to other module', () => {
+      const consoleLogSpy = jest.spyOn(console, 'log');
+      sut.logString('abc');
+      expect(consoleLogSpy).toBeCalledWith('abc');
+    });
+
+    test('Use a spy to replace the implementation of a method', () => {
+      jest.spyOn(sut, 'callExternalService').mockImplementation(() => {
+        console.log('calling mock implementation!!');
+      });
+      sut.callExternalService();
+    });
+  });
+
+  describe('Tracking callbacks with Jest mocks', () => {
     const callBackMock = jest.fn();
 
     afterEach(() => {
