@@ -20,6 +20,6 @@ export function toUpperCaseWithCb(
     callBack('Invalid argument!');
     return;
   }
-  callBack(`called with are ${arg}`);
+  callBack(`called function with ${arg}`);
   return arg.toUpperCase();
 }
