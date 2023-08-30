@@ -45,7 +45,10 @@ describe('Server test suite', () => {
     jest.clearAllMocks();
   });
 
-  it('should work by now', () => {
-    sut.startServer();
+  it('should start server on port 8080 and end the request', async () => {
+    await sut.startServer();
+
+    expect(serverMock.listen).toBeCalledWith(8080);
+    expect(responseMock.end).toBeCalled();
   });
 });
