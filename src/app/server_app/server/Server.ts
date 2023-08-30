@@ -18,16 +18,9 @@ export class Server {
 
   public async startServer() {
     this.server = createServer((req, res) => {
-      console.log(`Got request from ${req.headers['user-agent']}`);
-      console.log(`Got request for ${req.url}`);
-
-      this.handleRequest(req, res)
-        .then(() => {
-          res.end(); // End the response after all async operations are completed
-        })
-        .catch((error) => {
-          res.end(); // End the response in case of an error too
-        });
+      this.handleRequest(req, res).then(() => {
+        res.end(); // End the response after all async operations are completed
+      });
     });
 
     this.server.listen(8080);
