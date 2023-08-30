@@ -26,7 +26,6 @@ export class Server {
           res.end(); // End the response after all async operations are completed
         })
         .catch((error) => {
-          console.log(error);
           res.end(); // End the response in case of an error too
         });
     });
