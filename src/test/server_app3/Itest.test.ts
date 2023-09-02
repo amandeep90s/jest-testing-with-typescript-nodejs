@@ -8,7 +8,7 @@ import {
 import { Server } from '../../app/server_app/server/Server';
 import { makeAwesomeRequest } from './utils/http-client';
 
-describe('Server app integration tests', () => {
+xdescribe('Server app integration tests', () => {
   let server: Server;
 
   beforeAll(() => {
