@@ -42,6 +42,7 @@ describe('Server app integration tests', () => {
 
     expect(result.status).toBe(HTTP_CODES.CREATED);
     expect(resultBody.userId).toBeDefined();
+    console.log('Connected to host ' + process.env.HOST);
   });
 
   it('should register new user with awesomeRequest', async () => {
